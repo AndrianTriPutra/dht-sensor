@@ -1,0 +1,50 @@
+tutorial mendapatkan data DHT22 menggunakan library d2r2 dengan menggunakan program golang di raspberry
+
+referensi: https://github.com/d2r2/go-dht
+
+1. hubungkan pin GND dht ke GND Raspy
+2. hubungkan pin Vcc dht ke 3.3V Raspy
+3. hubungkan pin data dht ke pin GPIO04 Raspy
+
+4. instal package nya  dengan cara "go get -u github.com/d2r2/go-dht"
+5. jika sudah selesai, coba run program DHT22_d2r2.go
+6. Jika berhasil, data temperature dan humidity nya akan keluar
+7. jika rekan0rekan merasa terminalnya merasa kepenuhan ketikan me-run program itu maka coba edit sedikit library nya
+	7.a ketik di terminal/shell rekan-rekan seperti ini "nano /home/pi/go/src/github.com/d2r2/go-dht/dht.go"
+		jika rekan-rekan menginstall go nya di root maka "sudo nano go/src/github.com/d2r2/go-dht/dht.go"
+	7.b edit bagian yang telah ditandai //comment ini biar memenuhi terminal
+	
+func ReadDHTxx(sensorType SensorType, pin int,
+	boostPerfFlag bool) (temperature float32, humidity float32, err error) {
+	// Activate sensor and read data to pulses array
+	pulses, err := dialDHTxxAndGetResponse(pin, boostPerfFlag)
+	if err != nil {
+		return -1, -1, err
+	}
+	// Output debug information
+	//printPulseArrayForDebug(pulses)//comment ini biar memenuhi terminal
+	// Decode pulses
+	temp, hum, err := decodeDHTxxPulses(sensorType, pulses)
+	if err != nil {
+		return -1, -1, err
+	}
+	return temp, hum, nil
+}
+
+func decodeDHTxxPulses(sensorType SensorType, pulses []Pulse) (temperature float32,
+	humidity float32, err error) {
+	if len(pulses) == 85 {
+		pulses = pulses[3:]
+	} else if len(pulses) == 84 {
+		pulses = pulses[2:]
+	} else if len(pulses) == 83 {
+		pulses = pulses[1:]
+	} else if len(pulses) != 82 {
+		printPulseArrayForDebug(pulses)//comment ini biar memenuhi terminal
+		return -1, -1, fmt.Errorf("Can't decode pulse array received from "+
+			"DHTxx sensor, since incorrect length: %d", len(pulses))
+	}
+	
+	7.c setelah itu coba save dan run lagi
+
+8. semoga membantu, nanti kita coba menggunakan library yang lain
