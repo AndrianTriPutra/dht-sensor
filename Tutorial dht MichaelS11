@@ -1,0 +1,16 @@
+Tutorial dht MichaelS11
+
+1. masuk ke user root, (karena saya cobain tidak menggunakan root, GPIO nya tidak bisa diakses karena menggunakan lib kidoman)
+	go get github.com/MichaelS11/go-dht
+2. setelah hubungkan 
+	GND dht ke GND raspy
+	VCC dht ke 3.3 v raspy
+	data/output dht ke gpio4
+3. Run program DHT22_MichaelS11.go
+	jika berhasil, nanti data temp. dan hum. akan keluar
+	jika masih gagal karena checksum coba run lagi
+4. saya coba looping program ini, dan ternyata bisa walau tidak sesuai ekspektasi. 
+	mungkin dia butuh waktu untuk konversi data, dan saya liat script library nya ternyata time.sleep nya. tapi gpp lah 
+5. semoga membantu rekan-rekan
+
+salam maker
