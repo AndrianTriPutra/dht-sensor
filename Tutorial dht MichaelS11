@@ -1,5 +1,7 @@
 Tutorial dht MichaelS11
 
+referensi : https://github.com/MichaelS11/go-dht
+
 1. masuk ke user root, (karena saya cobain tidak menggunakan root, GPIO nya tidak bisa diakses karena menggunakan lib kidoman)
 	go get github.com/MichaelS11/go-dht
 2. setelah hubungkan 
