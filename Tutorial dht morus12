@@ -1,5 +1,7 @@
 Tutorial dht morus12
 
+referensi : https://github.com/morus12/dht22
+
 1. masuk ke user root, (karena saya cobain tidak menggunakan root, GPIO nya tidak bisa diakses karena menggunakan lib kidoman)
 	go get -u github.com/d2r2/go-dht
 2. setelah hubungkan 
