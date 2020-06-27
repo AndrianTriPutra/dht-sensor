@@ -2,6 +2,7 @@ package main
 
 import(
 	"log"
+	"time"
 	"github.com/d2r2/go-dht"
 )
 
@@ -18,6 +19,7 @@ func main() {
 			log.Fatal(err)
 		}
 		log.Printf("Temperature = %v*C, Humidity = %v%% (retried %d times)\n\n",temperature, humidity, retried)	
+		time.Sleep(1 * time.Second)
 	}
 }
 
